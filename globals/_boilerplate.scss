@@ -1,0 +1,65 @@
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    height: 100%;
+    scroll-behavior: smooth;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+input, button, textarea, select {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+img, picture, video,
+canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+p, h1, h2,
+h3, h4, h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+a, a:focus, a:visited {
+    text-decoration: none;
+}
+
+ol, ul, dd,
+summary {
+	list-style: none;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    // Change color based on your needs
+    border-top:1px solid #cccccc;
+    // Change margins based on your needs
+    margin:1em 0;
+}
+
+#root, #__next {
+    isolation: isolate;
+}
