@@ -7,8 +7,6 @@ html {
 
 *, *::before, *::after {
     box-sizing: inherit;
-    margin: 0;
-    padding: 0;
     vertical-align: baseline;
 }
 
@@ -16,6 +14,8 @@ body {
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
     min-height: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
 }
@@ -38,6 +38,8 @@ canvas, svg {
 ol, ul, dd,
 summary {
 	list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 hr {
