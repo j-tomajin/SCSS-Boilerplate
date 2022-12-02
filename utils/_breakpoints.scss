@@ -1,7 +1,8 @@
 @use 'functions' as f;
 
 $breakpoint-min: (
-    'medium-screen': f.em(640),
+    'small-screen': f.em(640),
+    'medium-screen': f.em(780),
     'large-screen': f.em(920),
     'xlarge-screen': f.em(1440),
 );
