@@ -1,8 +1,8 @@
-/* BREAKPOINTS */
+// BREAKPOINTS
 
 @use 'functions' as f;
 
-/* MIN-WIDTH */
+// MIN-WIDTH
 $breakpoint-min: (
     'small-screen': f.em(640),
     'medium-screen': f.em(780),
@@ -10,21 +10,21 @@ $breakpoint-min: (
     'xlarge-screen': f.em(1440),
 );
 
-/* CONVERT INTO MEDIA QUERIES */
+// CONVERT INTO MEDIA QUERIES
 @mixin breakpointMin($size) {
     @media (min-width: map-get($breakpoint-min, $size)) {
         @content;
     }
 };
 
-/* MAX-WIDTH */
+// MAX-WIDTH
 $breakpoint-max: (
     'xlarge-screen': f.em(1399.98),
     'large-screen': f.em(919.98),
     'medium-screen': f.em(639.98),
 );
 
-/* CONVERT INTO MEDIA QUERIES */
+// CONVERT INTO MEDIA QUERIES
 @mixin breakpointMax($size) {
     @media (max-width: map-get($breakpoint-max, $size)) {
         @content;
