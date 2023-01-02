@@ -1,0 +1,36 @@
+@use 'sass:math';
+@use 'functions' as f;
+@use 'fonts' as font;
+
+// text style
+@mixin text-style($fw, $color) {
+    font-weight: $fw;
+    color: $color;
+    font-family: font.$public-sans;
+
+    @if $fw == 300 {
+        font-size: 1rem;
+        font-size: clamp(1rem, 0.91rem + 0.37vw, 1.125rem);
+    }
+}
+
+// clamp
+// value: min-font-size, max-viewport-width, max-font-size
+@mixin clamp($minFontSize, $maxWidth, $maxFontSize) {
+    // min-viewport-width
+    $minWidth: 375;
+
+    $slope: math.div(($maxFontSize - $minFontSize), ($maxWidth - $minWidth));
+    $yAxis: -$minWidth * $slope + $minFontSize;
+    $slopeE: ($slope * 100) + vw;
+
+    @if math.is-unitless($maxFontSize) and math.is-unitless($minFontSize) and math.is-unitless($maxWidth) {
+        @if $minFontSize > $maxFontSize {
+            font-size: clamp(f.rem($maxFontSize), f.rem($yAxis) + $slopeE, f.rem($minFontSize));
+        } @else {
+            font-size: clamp(f.rem($minFontSize), f.rem($yAxis) + $slopeE, f.rem($maxFontSize));
+        }
+    } @else {
+        @error 'Don\'t use any units when using clamp() function; use number/s only. /*min-font-size, max-width, max-font-size*/';
+    }
+}
