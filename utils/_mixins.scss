@@ -15,22 +15,22 @@
 }
 
 // clamp
-// value: min-font-size, max-viewport-width, max-font-size
-@mixin clamp($minFontSize, $maxWidth, $maxFontSize) {
-    // min-viewport-width
+// value: min-size, max-viewport-width, max-size
+@function clampf($minSize, $maxWidth, $maxSize) {
     $minWidth: 375;
 
-    $slope: math.div(($maxFontSize - $minFontSize), ($maxWidth - $minWidth));
-    $yAxis: -$minWidth * $slope + $minFontSize;
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxis: -$minWidth * $slope + $minSize;
     $slopeE: ($slope * 100) + vw;
 
-    @if math.is-unitless($maxFontSize) and math.is-unitless($minFontSize) and math.is-unitless($maxWidth) {
-        @if $minFontSize > $maxFontSize {
-            font-size: clamp(f.rem($maxFontSize), f.rem($yAxis) + $slopeE, f.rem($minFontSize));
+    @if math.is-unitless($maxSize) and math.is-unitless($minSize) and math.is-unitless($maxWidth) {
+        @if $minSize > $maxSize {
+            @return clamp(f.rem($maxSize), f.rem($yAxis) + $slopeE, f.rem($minSize));
+
         } @else {
-            font-size: clamp(f.rem($minFontSize), f.rem($yAxis) + $slopeE, f.rem($maxFontSize));
+            @return clamp(f.rem($minSize), f.rem($yAxis) + $slopeE, f.rem($maxSize));
         }
     } @else {
-        @error 'Don\'t use any units when using clamp() function; use number/s only. /*min-font-size, max-width, max-font-size*/';
+        @error 'Don\'t use any units when using clamp() function; use numbers only. /*min-font-size, max-width, max-font-size*/';
     }
 }
