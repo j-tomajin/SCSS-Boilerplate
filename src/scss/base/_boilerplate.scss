@@ -1,0 +1,117 @@
+/* BOILERPLATE */
+
+/* Set core root defaults */
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    height: 100%;
+
+    &:focus-within {  
+        scroll-behavior: smooth;
+    }
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) { 
+    html:focus-within {
+     scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+}
+
+/* Box sizing rules */
+*, 
+*::before, 
+*::after {
+    box-sizing: inherit;
+    vertical-align: baseline;
+}
+
+/* Set core body defaults */
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeSpeed;
+    line-height: 1.5;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, 
+button, 
+textarea, 
+select {
+    font: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+/* Make images easier to work with */
+img, 
+picture, 
+video,
+canvas, 
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* Remove default margin */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul,
+ol,
+summary {
+  list-style: none;
+  margin: 0;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;  
+    // Change color based on your needs
+    border-top:1px solid #cccccc;
+    // Change margins based on your needs
+    margin:1em 0;
+}
+
+.sr-only:not(:focus):not(:active) {
+    clip: rect(0 0 0 0); 
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap; 
+    width: 1px;
+  }
+
+#root, 
+#__next {
+    isolation: isolate;
+}

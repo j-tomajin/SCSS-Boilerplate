@@ -1,0 +1,21 @@
+@use '../utilities/' as *;
+
+/* TYPOGRAPHY RESET */
+p, 
+h1, 
+h2,
+h3, 
+h4, 
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* A elements that don't have a class get default styles */
+a, a:focus, a:visited {
+    text-decoration: none;
+}
+
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}

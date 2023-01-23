@@ -1,0 +1,43 @@
+@use 'functions';
+
+// text style
+@mixin text-style(
+    $color: black, 
+    $ff: 'San Serif',
+    $lh: 1,
+    $ls: 0
+    ) {
+    color: $color;
+    line-height: $lh;
+    letter-spacing: $ls;
+
+    // depends on what font-family you use
+    // @if $ff == M {
+    //     font-family: 'Jakarta Medium';
+    // } @else if $ff == EB {
+    //     font-family: 'Jakarta ExtraBold';
+    // }
+}
+
+// psuedo
+@mixin psuedo(
+    $loc: before, 
+    $content: '', 
+    $pos: absolute,
+    $top: unset,
+    $right: unset,
+    $bottom: unset,
+    $left: unset
+    ) {
+    position: $pos;
+    
+    &::#{$loc} {
+        content: $content;
+        position: absolute;
+        top: $top;
+        right: $right;
+        bottom: $bottom;
+        left: $left;
+        @content;
+    }
+}

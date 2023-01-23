@@ -1,0 +1,42 @@
+@use 'sass:math';
+
+// Converts pixels into rem
+@function rem($pixel) {
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + rem;
+    }
+    @else {
+        @error 'Don\'t use any unit when using rem() function; use number/s only';
+    }
+};
+
+// Converts pixels into em
+@function em($pixel) {
+    @if math.is-unitless($pixel) {
+        @return math.div($pixel, 16) + em;
+    }
+    @else {
+        @error 'Don\'t use any unit when using em() function; use number/s only';
+    }
+};
+
+// clamp
+// value: min-size, max-viewport-width, max-size
+@function clampf($minSize, $maxWidth, $maxSize) {
+    $minWidth: 375;
+
+    $slope: math.div(($maxSize - $minSize), ($maxWidth - $minWidth));
+    $yAxis: -$minWidth * $slope + $minSize;
+    $slopeE: ($slope * 100) + vw;
+
+    @if math.is-unitless($maxSize) and math.is-unitless($minSize) and math.is-unitless($maxWidth) {
+        @if $minSize > $maxSize {
+            @return clamp(rem($maxSize), rem($yAxis) + $slopeE, rem($minSize));
+
+        } @else {
+            @return clamp(rem($minSize), rem($yAxis) + $slopeE, rem($maxSize));
+        }
+    } @else {
+        @error 'Don\'t use any units when using clamp() function; use numbers only. /*min-font-size, max-width, max-font-size*/';
+    }
+}

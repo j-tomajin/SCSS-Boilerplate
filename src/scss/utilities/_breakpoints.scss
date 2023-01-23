@@ -1,0 +1,31 @@
+@use 'functions' as *;
+// BREAKPOINTS
+
+// MIN-WIDTH
+$breakpoint-min: (
+    'small-screen': em(640),
+    'medium-screen': em(780),
+    'large-screen': em(920),
+    'xlarge-screen': em(1440),
+);
+
+// CONVERT INTO MEDIA QUERIES
+@mixin breakpointMin($size) {
+    @media (min-width: map-get($breakpoint-min, $size)) {
+        @content;
+    }
+};
+
+// MAX-WIDTH
+$breakpoint-max: (
+    'xlarge-screen': em(1399.98),
+    'large-screen': em(919.98),
+    'medium-screen': em(639.98),
+);
+
+// CONVERT INTO MEDIA QUERIES
+@mixin breakpointMax($size) {
+    @media (max-width: map-get($breakpoint-max, $size)) {
+        @content;
+    }
+}
